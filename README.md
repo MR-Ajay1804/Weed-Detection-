@@ -1,15 +1,46 @@
-# Weed Detection Project
+# Weed Detection AI
 
-A simple machine learning web app that classifies plant images as **weed** or **crop**. The project uses a trained scikit-learn logistic regression model and a Flask interface where users can upload an image and see the prediction with confidence.
+![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-Web_App-000000?style=for-the-badge&logo=flask&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Portfolio_Ready-49e88c?style=for-the-badge)
+
+A modern machine learning web application that classifies plant images as **weed** or **crop**. The project combines a Flask backend, a trained scikit-learn Logistic Regression model, secure image upload handling, and a responsive glassmorphism UI suitable for a final-year project or recruiter portfolio.
 
 ## Features
 
-- Upload JPG, JPEG, or PNG plant images
-- Predict whether the image is a weed or crop
-- Show prediction confidence when model probabilities are available
-- Clean Flask web interface
-- Separate scripts for training and command-line inference
-- Safer upload handling with file type checks, file size limit, and automatic cleanup
+- Modern dark glassmorphism interface
+- Animated gradient background and lightweight particle effect
+- Drag-and-drop image upload
+- Image preview before prediction
+- JPG, JPEG, and PNG upload validation
+- Secure filename handling
+- File size limit and invalid image protection
+- Loading state while prediction is running
+- Confidence score with professional progress bar
+- Clean prediction result card
+- Reset button for quick retry
+- Responsive navbar and footer
+- Fully responsive desktop, tablet, and mobile layout
+- Separate CSS and JavaScript files for maintainability
+
+## 📷 Screenshots
+
+### 🏠 Home Page
+
+![Home Page](docs/screenshots/homepage.png)
+
+---
+
+### 📤 Image Upload
+
+![Upload](docs/screenshots/upload.png)
+
+---
+
+### 🌿 Prediction Result
+
+![Prediction Result](docs/screenshots/result.png)
 
 ## Tech Stack
 
@@ -19,51 +50,63 @@ A simple machine learning web app that classifies plant images as **weed** or **
 - NumPy
 - Pillow
 - joblib
-- HTML, CSS, and JavaScript
+- HTML
+- CSS
+- JavaScript
 
-## Project Structure
+## Folder Structure
 
 ```text
 weed-detection/
-|-- app.py                       # Flask web application
-|-- requirements.txt             # Python dependencies
-|-- models/
-|   `-- sklearn_logreg.joblib    # Trained model
-|-- train_sklearn.py             # Model training script
-|-- src/
-|   |-- infer_sklearn.py         # Command-line prediction script
-|   `-- check_data.py            # Dataset checking helper
+|-- app.py
+|-- requirements.txt
+|-- README.md
+|-- train_sklearn.py
+|-- static/
+|   |-- css/
+|   |   `-- styles.css
+|   |-- js/
+|   |   `-- app.js
+|   `-- images/
 |-- templates/
-|   `-- index.html               # Web app page
-|-- data/
-|   |-- crop/                    # Crop training images
-|   `-- weed/                    # Weed training images
-`-- uploads/                     # Temporary uploaded images
+|   `-- index.html
+|-- models/
+|   `-- sklearn_logreg.joblib
+|-- uploads/
+|   `-- .gitkeep
+|-- src/
+|   |-- check_data.py
+|   |-- infer_sklearn.py
+|   `-- __init__.py
+`-- data/
+    |-- crop/
+    `-- weed/
 ```
 
-## Dataset
+## Requirements
 
-The local dataset currently contains:
+Install the dependencies from:
 
-- 477 weed images
-- 349 crop images
-- 826 total images before augmentation
+```bash
+requirements.txt
+```
 
-During training, each image is resized to 64 x 64 pixels, normalized, flattened, and augmented with a horizontal flip. The model is trained on an 80/20 train-test split.
+Main packages:
 
-The `data/` folder is ignored in Git because image datasets can make the repository large. Add a small sample dataset or share the dataset link separately if needed.
-
-## How It Works
-
-1. Images are loaded from `data/weed` and `data/crop`.
-2. Each image is resized to 64 x 64 RGB pixels.
-3. Pixel values are normalized between 0 and 1.
-4. The image is flattened into a feature vector.
-5. A logistic regression classifier is trained using scikit-learn.
-6. The trained model is saved in `models/sklearn_logreg.joblib`.
-7. The Flask app loads the saved model and predicts uploaded images.
+- Flask
+- joblib
+- numpy
+- Pillow
+- scikit-learn
 
 ## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/your-username/weed-detection-ai.git
+cd weed-detection-ai
+```
 
 Create and activate a virtual environment:
 
@@ -78,21 +121,37 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-## Run the Web App
+## Usage
+
+Run the Flask app:
 
 ```bash
 python app.py
 ```
 
-Open the local address shown in the terminal, usually:
+Open the local URL shown in the terminal:
 
 ```text
 http://127.0.0.1:5000
 ```
 
-## Train the Model
+Upload a plant image and click **Predict Image** to classify it.
 
-Make sure your dataset is arranged like this:
+## Command-Line Prediction
+
+```bash
+python src/infer_sklearn.py path/to/image.jpg
+```
+
+## Training
+
+The trained model is already stored in:
+
+```text
+models/sklearn_logreg.joblib
+```
+
+To retrain the model, arrange the dataset like this:
 
 ```text
 data/
@@ -106,19 +165,33 @@ Then run:
 python train_sklearn.py
 ```
 
-## Predict from Command Line
+## Model Information
 
-```bash
-python src/infer_sklearn.py path/to/image.jpg
-```
+- Model type: Logistic Regression
+- Library: scikit-learn
+- Input image size: 64 x 64 RGB
+- Preprocessing: resize, normalize pixel values, flatten image array
+- Classes: weed and crop
+- Saved model format: joblib
 
-## What I Used in This Project
+The prediction logic and trained model file are preserved. UI, validation, upload security, and maintainability were improved around the existing machine learning flow.
 
-This project uses Python for the backend and machine learning pipeline, Flask for the web app, scikit-learn for the logistic regression classifier, Pillow and NumPy for image preprocessing, and joblib to save and load the trained model. The frontend is built with HTML, CSS, and JavaScript.
+## Future Improvements
 
-## Notes for GitHub
+- Add CNN-based deep learning model for higher image accuracy
+- Add dataset download link
+- Add model evaluation charts
+- Add deployment instructions for Render or Railway
+- Add automated tests for Flask routes
+- Add screenshot images in the `docs/` folder
 
-- Do not push `venv/`, `uploads/`, or `__pycache__/`.
-- Keep the trained model if you want the app to run immediately after cloning.
-- Keep the dataset outside Git, or upload it separately and mention the download link in this README.
-- Before pushing, run the app once and test one weed image and one crop image.
+## License
+
+This project is available under the MIT License. Add a `LICENSE` file before publishing if you want to make the license official.
+
+## Author
+
+**Your Name**
+
+- GitHub: `https://github.com/your-username`
+- LinkedIn: `https://linkedin.com/in/your-profile`

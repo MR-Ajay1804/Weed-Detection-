@@ -1,5 +1,6 @@
 # Python cache and build files
 __pycache__/
+*.pyc
 *.py[cod]
 *$py.class
 *.egg-info/
@@ -24,6 +25,10 @@ instance/
 # Uploaded user files
 uploads/*
 !uploads/.gitkeep
+
+# Optional local screenshots/exports
+docs/screenshots/*.png
+docs/screenshots/*.jpg
 
 # Local datasets and backups
 data/
