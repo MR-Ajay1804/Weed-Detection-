@@ -28,19 +28,19 @@ A modern machine learning web application that classifies plant images as **weed
 
 ### 🏠 Home Page
 
-![Home Page](docs/screenshots/homepage.png)
+![Home Page](screenshots/homepage.png)
 
 ---
 
 ### 📤 Image Upload
 
-![Upload](docs/screenshots/upload.png)
+![Upload](screenshots/upload.png)
 
 ---
 
 ### 🌿 Prediction Result
 
-![Prediction Result](docs/screenshots/result.png)
+![Prediction Result](screenshots/result.png)
 
 ## Tech Stack
 
